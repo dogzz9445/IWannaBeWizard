@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "WizardLearner (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "WizardLearner (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
