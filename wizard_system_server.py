@@ -15,9 +15,12 @@ import grpc
 import wizard_system_pb2
 import wizard_system_pb2_grpc
 
-model = keras.models.load_model('model/model_classification_20220116')
+def resize_image_from_bytes(pre_image, original_size: tuple, target_size: tuple):
+    img = np.frombuffer(pre_image, dtype=np.float32).reshape(original_size + (3,))
+    img = image.array_to_img(img)
+    return img.resize(target_size) 
 
-def predict(image):
+def predict(model, image):
     img_path = 'triangle.png'
     img = image.load_img(img_path, target_size=(299, 299))
     x = image.img_to_array(img) 
@@ -60,65 +63,15 @@ def get_distance(start, end):
     # metres
     return R * c
 
-
-class RouteGuideServicer(wizard_system_pb2_grpc.RouteGuideServicer):
-    """Provides methods that implement functionality of route guide server."""
-
+class WizardSystemServicer(wizard_system_pb2_grpc.WizardServiceServicer):
+    
     def __init__(self):
-        self.db = route_guide_resources.read_route_guide_database()
-
-    def GetFeature(self, request, context):
-        feature = get_feature(self.db, request)
-        if feature is None:
-            return wizard_system_pb2.Feature(name="", location=request)
-        else:
-            return feature
-
-    def ListFeatures(self, request, context):
-        left = min(request.lo.longitude, request.hi.longitude)
-        right = max(request.lo.longitude, request.hi.longitude)
-        top = max(request.lo.latitude, request.hi.latitude)
-        bottom = min(request.lo.latitude, request.hi.latitude)
-        for feature in self.db:
-            if (feature.location.longitude >= left and
-                    feature.location.longitude <= right and
-                    feature.location.latitude >= bottom and
-                    feature.location.latitude <= top):
-                yield feature
-
-    def RecordRoute(self, request_iterator, context):
-        point_count = 0
-        feature_count = 0
-        distance = 0.0
-        prev_point = None
-
-        start_time = time.time()
-        for point in request_iterator:
-            point_count += 1
-            if get_feature(self.db, point):
-                feature_count += 1
-            if prev_point:
-                distance += get_distance(prev_point, point)
-            prev_point = point
-
-        elapsed_time = time.time() - start_time
-        return wizard_system_pb2.RouteSummary(point_count=point_count,
-                                            feature_count=feature_count,
-                                            distance=int(distance),
-                                            elapsed_time=int(elapsed_time))
-
-    def RouteChat(self, request_iterator, context):
-        prev_notes = []
-        for new_note in request_iterator:
-            for prev_note in prev_notes:
-                if prev_note.location == new_note.location:
-                    yield prev_note
-            prev_notes.append(new_note)
-
+        self.model = keras.models.load_model('model/model_classification_20220116')
+        
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    wizard_system_pb2_grpc.add_RouteGuideServicer_to_server(RouteGuideServicer(), server)
+    wizard_system_pb2_grpc.add_WizardServiceServicer_to_server(WizardSystemServicer(), server)
     server.add_insecure_port('[::]:50051')
     server.start()
     server.wait_for_termination()
