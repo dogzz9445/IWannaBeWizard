@@ -11,11 +11,11 @@ service WizardService
 {
     rpc PostMagicImageRaw (stream Image) returns (Magic);
 	rpc PostMagicImagePng (stream Image) returns (Magic);
-    rpc GetMacAddress (google.protobuf.Empty) returns (MessageMacAddress);
-	rpc GetHeartBeat (google.protobuf.Empty) returns (HeartBeat);
-	rpc GetPerformance (google.protobuf.Empty) returns (Performance);
-	rpc PostComputerControlMessage (ComputerControl) returns (google.protobuf.Empty);
-	rpc PostProgramControlMessage (ProgramControl) returns (MessageResult);
+    // rpc GetMacAddress (google.protobuf.Empty) returns (MessageMacAddress);
+	// rpc GetHeartBeat (google.protobuf.Empty) returns (HeartBeat);
+	// rpc GetPerformance (google.protobuf.Empty) returns (Performance);
+	// rpc PostComputerControlMessage (ComputerControl) returns (google.protobuf.Empty);
+	// rpc PostProgramControlMessage (ProgramControl) returns (MessageResult);
 }
 
 // 이미지

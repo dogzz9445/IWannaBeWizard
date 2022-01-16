@@ -2,7 +2,6 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 import wizard_system_pb2 as wizard__system__pb2
 
 
@@ -15,73 +14,34 @@ class WizardServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.PostMagicImage = channel.stream_unary(
-                '/WizardSystem.WizardService/PostMagicImage',
+        self.PostMagicImageRaw = channel.stream_unary(
+                '/WizardSystem.WizardService/PostMagicImageRaw',
                 request_serializer=wizard__system__pb2.Image.SerializeToString,
                 response_deserializer=wizard__system__pb2.Magic.FromString,
                 )
-        self.GetMacAddress = channel.unary_unary(
-                '/WizardSystem.WizardService/GetMacAddress',
-                request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-                response_deserializer=wizard__system__pb2.MessageMacAddress.FromString,
-                )
-        self.GetHeartBeat = channel.unary_unary(
-                '/WizardSystem.WizardService/GetHeartBeat',
-                request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-                response_deserializer=wizard__system__pb2.HeartBeat.FromString,
-                )
-        self.GetPerformance = channel.unary_unary(
-                '/WizardSystem.WizardService/GetPerformance',
-                request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-                response_deserializer=wizard__system__pb2.Performance.FromString,
-                )
-        self.PostComputerControlMessage = channel.unary_unary(
-                '/WizardSystem.WizardService/PostComputerControlMessage',
-                request_serializer=wizard__system__pb2.ComputerControl.SerializeToString,
-                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                )
-        self.PostProgramControlMessage = channel.unary_unary(
-                '/WizardSystem.WizardService/PostProgramControlMessage',
-                request_serializer=wizard__system__pb2.ProgramControl.SerializeToString,
-                response_deserializer=wizard__system__pb2.MessageResult.FromString,
+        self.PostMagicImagePng = channel.stream_unary(
+                '/WizardSystem.WizardService/PostMagicImagePng',
+                request_serializer=wizard__system__pb2.Image.SerializeToString,
+                response_deserializer=wizard__system__pb2.Magic.FromString,
                 )
 
 
 class WizardServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def PostMagicImage(self, request_iterator, context):
+    def PostMagicImageRaw(self, request_iterator, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def GetMacAddress(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def GetHeartBeat(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def GetPerformance(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def PostComputerControlMessage(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def PostProgramControlMessage(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+    def PostMagicImagePng(self, request_iterator, context):
+        """rpc GetMacAddress (google.protobuf.Empty) returns (MessageMacAddress);
+        rpc GetHeartBeat (google.protobuf.Empty) returns (HeartBeat);
+        rpc GetPerformance (google.protobuf.Empty) returns (Performance);
+        rpc PostComputerControlMessage (ComputerControl) returns (google.protobuf.Empty);
+        rpc PostProgramControlMessage (ProgramControl) returns (MessageResult);
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -89,35 +49,15 @@ class WizardServiceServicer(object):
 
 def add_WizardServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'PostMagicImage': grpc.stream_unary_rpc_method_handler(
-                    servicer.PostMagicImage,
+            'PostMagicImageRaw': grpc.stream_unary_rpc_method_handler(
+                    servicer.PostMagicImageRaw,
                     request_deserializer=wizard__system__pb2.Image.FromString,
                     response_serializer=wizard__system__pb2.Magic.SerializeToString,
             ),
-            'GetMacAddress': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetMacAddress,
-                    request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                    response_serializer=wizard__system__pb2.MessageMacAddress.SerializeToString,
-            ),
-            'GetHeartBeat': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetHeartBeat,
-                    request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                    response_serializer=wizard__system__pb2.HeartBeat.SerializeToString,
-            ),
-            'GetPerformance': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetPerformance,
-                    request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                    response_serializer=wizard__system__pb2.Performance.SerializeToString,
-            ),
-            'PostComputerControlMessage': grpc.unary_unary_rpc_method_handler(
-                    servicer.PostComputerControlMessage,
-                    request_deserializer=wizard__system__pb2.ComputerControl.FromString,
-                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-            ),
-            'PostProgramControlMessage': grpc.unary_unary_rpc_method_handler(
-                    servicer.PostProgramControlMessage,
-                    request_deserializer=wizard__system__pb2.ProgramControl.FromString,
-                    response_serializer=wizard__system__pb2.MessageResult.SerializeToString,
+            'PostMagicImagePng': grpc.stream_unary_rpc_method_handler(
+                    servicer.PostMagicImagePng,
+                    request_deserializer=wizard__system__pb2.Image.FromString,
+                    response_serializer=wizard__system__pb2.Magic.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -130,7 +70,7 @@ class WizardService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def PostMagicImage(request_iterator,
+    def PostMagicImageRaw(request_iterator,
             target,
             options=(),
             channel_credentials=None,
@@ -140,14 +80,14 @@ class WizardService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.stream_unary(request_iterator, target, '/WizardSystem.WizardService/PostMagicImage',
+        return grpc.experimental.stream_unary(request_iterator, target, '/WizardSystem.WizardService/PostMagicImageRaw',
             wizard__system__pb2.Image.SerializeToString,
             wizard__system__pb2.Magic.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def GetMacAddress(request,
+    def PostMagicImagePng(request_iterator,
             target,
             options=(),
             channel_credentials=None,
@@ -157,76 +97,8 @@ class WizardService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/WizardSystem.WizardService/GetMacAddress',
-            google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-            wizard__system__pb2.MessageMacAddress.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def GetHeartBeat(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/WizardSystem.WizardService/GetHeartBeat',
-            google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-            wizard__system__pb2.HeartBeat.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def GetPerformance(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/WizardSystem.WizardService/GetPerformance',
-            google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-            wizard__system__pb2.Performance.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def PostComputerControlMessage(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/WizardSystem.WizardService/PostComputerControlMessage',
-            wizard__system__pb2.ComputerControl.SerializeToString,
-            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def PostProgramControlMessage(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/WizardSystem.WizardService/PostProgramControlMessage',
-            wizard__system__pb2.ProgramControl.SerializeToString,
-            wizard__system__pb2.MessageResult.FromString,
+        return grpc.experimental.stream_unary(request_iterator, target, '/WizardSystem.WizardService/PostMagicImagePng',
+            wizard__system__pb2.Image.SerializeToString,
+            wizard__system__pb2.Magic.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
