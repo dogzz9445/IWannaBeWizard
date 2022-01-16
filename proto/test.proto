@@ -3,15 +3,30 @@ syntax = "proto3";
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 
-option csharp_namespace = "RemoteSystem.Remote";
+package WizardSystem;
 
-service Remote
+option csharp_namespace = "WizardSystem.Protobuf";
+
+service WizardService
 {
+    rpc PostMagicImage (stream Image) returns (Magic);
     rpc GetMacAddress (google.protobuf.Empty) returns (MessageMacAddress);
 	rpc GetHeartBeat (google.protobuf.Empty) returns (HeartBeat);
 	rpc GetPerformance (google.protobuf.Empty) returns (Performance);
 	rpc PostComputerControlMessage (ComputerControl) returns (google.protobuf.Empty);
 	rpc PostProgramControlMessage (ProgramControl) returns (MessageResult);
+}
+
+// 이미지
+message Image {
+    int32 width = 1;
+    int32 height = 2;
+    bytes imageData = 3;
+}
+
+// Magic 타입
+message Magic {
+    string type = 1;
 }
 
 message MessageMacAddress

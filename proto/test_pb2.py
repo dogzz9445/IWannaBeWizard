@@ -16,10 +16,12 @@ from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\ntest.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\'\n\x11MessageMacAddress\x12\x12\n\nmacAddress\x18\x01 \x01(\t\"\x85\x01\n\rMessageResult\x12\x30\n\x06result\x18\x01 \x01(\x0e\x32 .MessageResult.MessageResultType\x12\x15\n\rresultMessage\x18\x02 \x01(\t\"+\n\x11MessageResultType\x12\x0b\n\x07SUCCESS\x10\x00\x12\t\n\x05\x45RROR\x10\x01\"\x81\x01\n\x0f\x43omputerControl\x12\x35\n\x07\x63ontrol\x18\x01 \x01(\x0e\x32$.ComputerControl.ComputerControlType\"7\n\x13\x43omputerControlType\x12\t\n\x05START\x10\x00\x12\x0b\n\x07RESTART\x10\x01\x12\x08\n\x04STOP\x10\x02\"\xa5\x01\n\x0eProgramControl\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08\x66ileName\x18\x02 \x01(\t\x12\x13\n\x0bprocessName\x18\x03 \x01(\t\x12\x33\n\x07\x63ontrol\x18\x04 \x01(\x0e\x32\".ProgramControl.ProgramControlType\")\n\x12ProgramControlType\x12\t\n\x05START\x10\x00\x12\x08\n\x04STOP\x10\x01\"/\n\tHeartBeat\x12\x11\n\tTimestamp\x18\x01 \x01(\t\x12\x0f\n\x07Message\x18\x02 \x01(\t\"\\\n\x0bPerformance\x12\x10\n\x08\x43puUsage\x18\x01 \x01(\x02\x12\x13\n\x0bMemoryUsage\x18\x02 \x01(\x02\x12\x14\n\x0cNetworkUsage\x18\x03 \x01(\x02\x12\x10\n\x08GpuUsage\x18\x04 \x01(\x02\x32\xb7\x02\n\x06Remote\x12;\n\rGetMacAddress\x12\x16.google.protobuf.Empty\x1a\x12.MessageMacAddress\x12\x32\n\x0cGetHeartBeat\x12\x16.google.protobuf.Empty\x1a\n.HeartBeat\x12\x36\n\x0eGetPerformance\x12\x16.google.protobuf.Empty\x1a\x0c.Performance\x12\x46\n\x1aPostComputerControlMessage\x12\x10.ComputerControl\x1a\x16.google.protobuf.Empty\x12<\n\x19PostProgramControlMessage\x12\x0f.ProgramControl\x1a\x0e.MessageResultB\x16\xaa\x02\x13RemoteSystem.Remoteb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\ntest.proto\x12\x0cWizardSystem\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"9\n\x05Image\x12\r\n\x05width\x18\x01 \x01(\x05\x12\x0e\n\x06height\x18\x02 \x01(\x05\x12\x11\n\timageData\x18\x03 \x01(\x0c\"\x15\n\x05Magic\x12\x0c\n\x04type\x18\x01 \x01(\t\"\'\n\x11MessageMacAddress\x12\x12\n\nmacAddress\x18\x01 \x01(\t\"\x92\x01\n\rMessageResult\x12=\n\x06result\x18\x01 \x01(\x0e\x32-.WizardSystem.MessageResult.MessageResultType\x12\x15\n\rresultMessage\x18\x02 \x01(\t\"+\n\x11MessageResultType\x12\x0b\n\x07SUCCESS\x10\x00\x12\t\n\x05\x45RROR\x10\x01\"\x8e\x01\n\x0f\x43omputerControl\x12\x42\n\x07\x63ontrol\x18\x01 \x01(\x0e\x32\x31.WizardSystem.ComputerControl.ComputerControlType\"7\n\x13\x43omputerControlType\x12\t\n\x05START\x10\x00\x12\x0b\n\x07RESTART\x10\x01\x12\x08\n\x04STOP\x10\x02\"\xb2\x01\n\x0eProgramControl\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08\x66ileName\x18\x02 \x01(\t\x12\x13\n\x0bprocessName\x18\x03 \x01(\t\x12@\n\x07\x63ontrol\x18\x04 \x01(\x0e\x32/.WizardSystem.ProgramControl.ProgramControlType\")\n\x12ProgramControlType\x12\t\n\x05START\x10\x00\x12\x08\n\x04STOP\x10\x01\"/\n\tHeartBeat\x12\x11\n\tTimestamp\x18\x01 \x01(\t\x12\x0f\n\x07Message\x18\x02 \x01(\t\"\\\n\x0bPerformance\x12\x10\n\x08\x43puUsage\x18\x01 \x01(\x02\x12\x13\n\x0bMemoryUsage\x18\x02 \x01(\x02\x12\x14\n\x0cNetworkUsage\x18\x03 \x01(\x02\x12\x10\n\x08GpuUsage\x18\x04 \x01(\x02\x32\xca\x03\n\rWizardService\x12<\n\x0ePostMagicImage\x12\x13.WizardSystem.Image\x1a\x13.WizardSystem.Magic(\x01\x12H\n\rGetMacAddress\x12\x16.google.protobuf.Empty\x1a\x1f.WizardSystem.MessageMacAddress\x12?\n\x0cGetHeartBeat\x12\x16.google.protobuf.Empty\x1a\x17.WizardSystem.HeartBeat\x12\x43\n\x0eGetPerformance\x12\x16.google.protobuf.Empty\x1a\x19.WizardSystem.Performance\x12S\n\x1aPostComputerControlMessage\x12\x1d.WizardSystem.ComputerControl\x1a\x16.google.protobuf.Empty\x12V\n\x19PostProgramControlMessage\x12\x1c.WizardSystem.ProgramControl\x1a\x1b.WizardSystem.MessageResultB\x18\xaa\x02\x15WizardSystem.Protobufb\x06proto3')
 
 
 
+_IMAGE = DESCRIPTOR.message_types_by_name['Image']
+_MAGIC = DESCRIPTOR.message_types_by_name['Magic']
 _MESSAGEMACADDRESS = DESCRIPTOR.message_types_by_name['MessageMacAddress']
 _MESSAGERESULT = DESCRIPTOR.message_types_by_name['MessageResult']
 _COMPUTERCONTROL = DESCRIPTOR.message_types_by_name['ComputerControl']
@@ -29,71 +31,89 @@ _PERFORMANCE = DESCRIPTOR.message_types_by_name['Performance']
 _MESSAGERESULT_MESSAGERESULTTYPE = _MESSAGERESULT.enum_types_by_name['MessageResultType']
 _COMPUTERCONTROL_COMPUTERCONTROLTYPE = _COMPUTERCONTROL.enum_types_by_name['ComputerControlType']
 _PROGRAMCONTROL_PROGRAMCONTROLTYPE = _PROGRAMCONTROL.enum_types_by_name['ProgramControlType']
+Image = _reflection.GeneratedProtocolMessageType('Image', (_message.Message,), {
+  'DESCRIPTOR' : _IMAGE,
+  '__module__' : 'test_pb2'
+  # @@protoc_insertion_point(class_scope:WizardSystem.Image)
+  })
+_sym_db.RegisterMessage(Image)
+
+Magic = _reflection.GeneratedProtocolMessageType('Magic', (_message.Message,), {
+  'DESCRIPTOR' : _MAGIC,
+  '__module__' : 'test_pb2'
+  # @@protoc_insertion_point(class_scope:WizardSystem.Magic)
+  })
+_sym_db.RegisterMessage(Magic)
+
 MessageMacAddress = _reflection.GeneratedProtocolMessageType('MessageMacAddress', (_message.Message,), {
   'DESCRIPTOR' : _MESSAGEMACADDRESS,
   '__module__' : 'test_pb2'
-  # @@protoc_insertion_point(class_scope:MessageMacAddress)
+  # @@protoc_insertion_point(class_scope:WizardSystem.MessageMacAddress)
   })
 _sym_db.RegisterMessage(MessageMacAddress)
 
 MessageResult = _reflection.GeneratedProtocolMessageType('MessageResult', (_message.Message,), {
   'DESCRIPTOR' : _MESSAGERESULT,
   '__module__' : 'test_pb2'
-  # @@protoc_insertion_point(class_scope:MessageResult)
+  # @@protoc_insertion_point(class_scope:WizardSystem.MessageResult)
   })
 _sym_db.RegisterMessage(MessageResult)
 
 ComputerControl = _reflection.GeneratedProtocolMessageType('ComputerControl', (_message.Message,), {
   'DESCRIPTOR' : _COMPUTERCONTROL,
   '__module__' : 'test_pb2'
-  # @@protoc_insertion_point(class_scope:ComputerControl)
+  # @@protoc_insertion_point(class_scope:WizardSystem.ComputerControl)
   })
 _sym_db.RegisterMessage(ComputerControl)
 
 ProgramControl = _reflection.GeneratedProtocolMessageType('ProgramControl', (_message.Message,), {
   'DESCRIPTOR' : _PROGRAMCONTROL,
   '__module__' : 'test_pb2'
-  # @@protoc_insertion_point(class_scope:ProgramControl)
+  # @@protoc_insertion_point(class_scope:WizardSystem.ProgramControl)
   })
 _sym_db.RegisterMessage(ProgramControl)
 
 HeartBeat = _reflection.GeneratedProtocolMessageType('HeartBeat', (_message.Message,), {
   'DESCRIPTOR' : _HEARTBEAT,
   '__module__' : 'test_pb2'
-  # @@protoc_insertion_point(class_scope:HeartBeat)
+  # @@protoc_insertion_point(class_scope:WizardSystem.HeartBeat)
   })
 _sym_db.RegisterMessage(HeartBeat)
 
 Performance = _reflection.GeneratedProtocolMessageType('Performance', (_message.Message,), {
   'DESCRIPTOR' : _PERFORMANCE,
   '__module__' : 'test_pb2'
-  # @@protoc_insertion_point(class_scope:Performance)
+  # @@protoc_insertion_point(class_scope:WizardSystem.Performance)
   })
 _sym_db.RegisterMessage(Performance)
 
-_REMOTE = DESCRIPTOR.services_by_name['Remote']
+_WIZARDSERVICE = DESCRIPTOR.services_by_name['WizardService']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  DESCRIPTOR._serialized_options = b'\252\002\023RemoteSystem.Remote'
-  _MESSAGEMACADDRESS._serialized_start=76
-  _MESSAGEMACADDRESS._serialized_end=115
-  _MESSAGERESULT._serialized_start=118
-  _MESSAGERESULT._serialized_end=251
-  _MESSAGERESULT_MESSAGERESULTTYPE._serialized_start=208
-  _MESSAGERESULT_MESSAGERESULTTYPE._serialized_end=251
-  _COMPUTERCONTROL._serialized_start=254
-  _COMPUTERCONTROL._serialized_end=383
-  _COMPUTERCONTROL_COMPUTERCONTROLTYPE._serialized_start=328
-  _COMPUTERCONTROL_COMPUTERCONTROLTYPE._serialized_end=383
-  _PROGRAMCONTROL._serialized_start=386
-  _PROGRAMCONTROL._serialized_end=551
-  _PROGRAMCONTROL_PROGRAMCONTROLTYPE._serialized_start=510
-  _PROGRAMCONTROL_PROGRAMCONTROLTYPE._serialized_end=551
-  _HEARTBEAT._serialized_start=553
-  _HEARTBEAT._serialized_end=600
-  _PERFORMANCE._serialized_start=602
-  _PERFORMANCE._serialized_end=694
-  _REMOTE._serialized_start=697
-  _REMOTE._serialized_end=1008
+  DESCRIPTOR._serialized_options = b'\252\002\025WizardSystem.Protobuf'
+  _IMAGE._serialized_start=90
+  _IMAGE._serialized_end=147
+  _MAGIC._serialized_start=149
+  _MAGIC._serialized_end=170
+  _MESSAGEMACADDRESS._serialized_start=172
+  _MESSAGEMACADDRESS._serialized_end=211
+  _MESSAGERESULT._serialized_start=214
+  _MESSAGERESULT._serialized_end=360
+  _MESSAGERESULT_MESSAGERESULTTYPE._serialized_start=317
+  _MESSAGERESULT_MESSAGERESULTTYPE._serialized_end=360
+  _COMPUTERCONTROL._serialized_start=363
+  _COMPUTERCONTROL._serialized_end=505
+  _COMPUTERCONTROL_COMPUTERCONTROLTYPE._serialized_start=450
+  _COMPUTERCONTROL_COMPUTERCONTROLTYPE._serialized_end=505
+  _PROGRAMCONTROL._serialized_start=508
+  _PROGRAMCONTROL._serialized_end=686
+  _PROGRAMCONTROL_PROGRAMCONTROLTYPE._serialized_start=645
+  _PROGRAMCONTROL_PROGRAMCONTROLTYPE._serialized_end=686
+  _HEARTBEAT._serialized_start=688
+  _HEARTBEAT._serialized_end=735
+  _PERFORMANCE._serialized_start=737
+  _PERFORMANCE._serialized_end=829
+  _WIZARDSERVICE._serialized_start=832
+  _WIZARDSERVICE._serialized_end=1290
 # @@protoc_insertion_point(module_scope)
