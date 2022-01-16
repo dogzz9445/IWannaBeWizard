@@ -12,8 +12,8 @@ import math
 import time
 
 import grpc
-import wizard_system_pb
-import wizard_system_pb_grpc
+import wizard_system_pb2
+import wizard_system_pb2_grpc
 
 model = keras.models.load_model('model/model_classification_20220116')
 
@@ -61,7 +61,7 @@ def get_distance(start, end):
     return R * c
 
 
-class RouteGuideServicer(wizard_system_pb_grpc.RouteGuideServicer):
+class RouteGuideServicer(wizard_system_pb2_grpc.RouteGuideServicer):
     """Provides methods that implement functionality of route guide server."""
 
     def __init__(self):
@@ -70,7 +70,7 @@ class RouteGuideServicer(wizard_system_pb_grpc.RouteGuideServicer):
     def GetFeature(self, request, context):
         feature = get_feature(self.db, request)
         if feature is None:
-            return wizard_system_pb.Feature(name="", location=request)
+            return wizard_system_pb2.Feature(name="", location=request)
         else:
             return feature
 
@@ -102,7 +102,7 @@ class RouteGuideServicer(wizard_system_pb_grpc.RouteGuideServicer):
             prev_point = point
 
         elapsed_time = time.time() - start_time
-        return wizard_system_pb.RouteSummary(point_count=point_count,
+        return wizard_system_pb2.RouteSummary(point_count=point_count,
                                             feature_count=feature_count,
                                             distance=int(distance),
                                             elapsed_time=int(elapsed_time))
@@ -118,7 +118,7 @@ class RouteGuideServicer(wizard_system_pb_grpc.RouteGuideServicer):
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    wizard_system_pb_grpc.add_RouteGuideServicer_to_server(RouteGuideServicer(), server)
+    wizard_system_pb2_grpc.add_RouteGuideServicer_to_server(RouteGuideServicer(), server)
     server.add_insecure_port('[::]:50051')
     server.start()
     server.wait_for_termination()
