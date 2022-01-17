@@ -12,8 +12,13 @@ $ python -m pip install -r requirements.txt
 ```
 $ pip install grpcio-tools
 ```
+> for python
 ```
 $ python -m grpc_tools.protoc -I=./proto/ --python_out=. --grpc_python_out=. ./proto/wizard_system.proto
+```
+> for csharp
+```
+$ protoc -I=./proto/ --csharp_out=csharp ./proto/wizard_system.proto
 ```
 
 # TODO:

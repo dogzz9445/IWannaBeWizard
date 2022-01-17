@@ -511,3 +511,4 @@ FodyWeavers.xsd
 *.hdf5
 
 model/
+*.exe

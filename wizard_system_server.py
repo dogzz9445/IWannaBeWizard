@@ -21,29 +21,24 @@ def resize_image_from_bytes(pre_image, original_size: tuple, target_size: tuple)
     return img.resize(target_size) 
 
 def predict(model, image):
-    img_path = 'triangle.png'
-    img = image.load_img(img_path, target_size=(299, 299))
-    x = image.img_to_array(img) 
-    x = np.expand_dims(x, axis=0)
-    x = preprocess_input(x)
+    image = np.expand_dims(image, axis=0)
+    image = preprocess_input(image)
 
-    preds = model.predict(x).argmax(axis=1)
-    # decode the results into a list of tuples (class, description, probability)
-    # (one such list for each sample in the batch)
+    preds = model.predict(image).argmax(axis=1)
     print('Predicted:', preds)
-    # print(classification_report(test_data.classes, pred))
     return preds
 
 class WizardSystemServicer(wizard_system_pb2_grpc.WizardServiceServicer):
     
     def __init__(self):
-        #self.model = keras.models.load_model('model/model_classification_20220116')
+        self.model = keras.models.load_model('model/model_classification_20220116')
         pass
         
     def PostMagicImageRaw(self, request, context):
         context.set_code(grpc.StatusCode.OK)
         resized_image = resize_image_from_bytes(request.imageData, (request.height, request.width), (299, 299))
-        return wizard_system_pb2.Magic(type=str(resized_image.height))
+        preds = predict(self.model, resized_image)
+        return wizard_system_pb2.Magic(type=str(preds[0]))
 
     def PostMagicImagePng(self, request, context):
         context.set_code(grpc.StatusCode.OK)

@@ -11,11 +11,6 @@ service WizardService
 {
     rpc PostMagicImageRaw (Image) returns (Magic);
 	rpc PostMagicImagePng (Image) returns (Magic);
-    // rpc GetMacAddress (google.protobuf.Empty) returns (MessageMacAddress);
-	// rpc GetHeartBeat (google.protobuf.Empty) returns (HeartBeat);
-	// rpc GetPerformance (google.protobuf.Empty) returns (Performance);
-	// rpc PostComputerControlMessage (ComputerControl) returns (google.protobuf.Empty);
-	// rpc PostProgramControlMessage (ProgramControl) returns (MessageResult);
 }
 
 // 이미지
@@ -30,54 +25,54 @@ message Magic {
     string type = 1;
 }
 
-message MessageMacAddress
-{
-	string macAddress = 1;
-}
+// message MessageMacAddress
+// {
+// 	string macAddress = 1;
+// }
 
-message MessageResult 
-{
-	enum MessageResultType {
-		SUCCESS = 0;
-		ERROR = 1;
-	}
-	MessageResultType result = 1;
-	string resultMessage = 2;
-}
+// message MessageResult 
+// {
+// 	enum MessageResultType {
+// 		SUCCESS = 0;
+// 		ERROR = 1;
+// 	}
+// 	MessageResultType result = 1;
+// 	string resultMessage = 2;
+// }
 
-message ComputerControl
-{
-	enum ComputerControlType {
-		START = 0;
-		RESTART = 1;
-		STOP = 2;
-	}
-	ComputerControlType control = 1;
-}
+// message ComputerControl
+// {
+// 	enum ComputerControlType {
+// 		START = 0;
+// 		RESTART = 1;
+// 		STOP = 2;
+// 	}
+// 	ComputerControlType control = 1;
+// }
 
-message ProgramControl
-{
-	string name = 1;
-	string fileName = 2;
-	string processName = 3;
+// message ProgramControl
+// {
+// 	string name = 1;
+// 	string fileName = 2;
+// 	string processName = 3;
 	
-	enum ProgramControlType {
-		START = 0;
-		STOP = 1;
-	}
-	ProgramControlType control = 4;
-}
+// 	enum ProgramControlType {
+// 		START = 0;
+// 		STOP = 1;
+// 	}
+// 	ProgramControlType control = 4;
+// }
 
-message HeartBeat
-{
-	string Timestamp = 1;
-	string Message = 2;
-}
+// message HeartBeat
+// {
+// 	string Timestamp = 1;
+// 	string Message = 2;
+// }
 
-message Performance
-{
-	float CpuUsage = 1;
-	float MemoryUsage = 2;
-	float NetworkUsage = 3;
-	float GpuUsage = 4;
-}
+// message Performance
+// {
+// 	float CpuUsage = 1;
+// 	float MemoryUsage = 2;
+// 	float NetworkUsage = 3;
+// 	float GpuUsage = 4;
+// }
