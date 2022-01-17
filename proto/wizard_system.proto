@@ -9,8 +9,8 @@ option csharp_namespace = "WizardSystem.Protobuf";
 
 service WizardService
 {
-    rpc PostMagicImageRaw (stream Image) returns (Magic);
-	rpc PostMagicImagePng (stream Image) returns (Magic);
+    rpc PostMagicImageRaw (Image) returns (Magic);
+	rpc PostMagicImagePng (Image) returns (Magic);
     // rpc GetMacAddress (google.protobuf.Empty) returns (MessageMacAddress);
 	// rpc GetHeartBeat (google.protobuf.Empty) returns (HeartBeat);
 	// rpc GetPerformance (google.protobuf.Empty) returns (Performance);

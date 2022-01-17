@@ -37,8 +37,19 @@ def predict(model, image):
 class WizardSystemServicer(wizard_system_pb2_grpc.WizardServiceServicer):
     
     def __init__(self):
-        self.model = keras.models.load_model('model/model_classification_20220116')
+        #self.model = keras.models.load_model('model/model_classification_20220116')
+        pass
         
+    def PostMagicImageRaw(self, request, context):
+        context.set_code(grpc.StatusCode.OK)
+        resized_image = resize_image_from_bytes(request.imageData, (request.height, request.width), (299, 299))
+        return wizard_system_pb2.Magic(type=str(resized_image.height))
+
+    def PostMagicImagePng(self, request, context):
+        context.set_code(grpc.StatusCode.OK)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
@@ -46,6 +57,7 @@ def serve():
     server.add_insecure_port('[::]:50051')
     server.start()
     server.wait_for_termination()
+
 
 if __name__ == '__main__':
     logging.basicConfig()

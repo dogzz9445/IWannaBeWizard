@@ -14,12 +14,12 @@ class WizardServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.PostMagicImageRaw = channel.stream_unary(
+        self.PostMagicImageRaw = channel.unary_unary(
                 '/WizardSystem.WizardService/PostMagicImageRaw',
                 request_serializer=wizard__system__pb2.Image.SerializeToString,
                 response_deserializer=wizard__system__pb2.Magic.FromString,
                 )
-        self.PostMagicImagePng = channel.stream_unary(
+        self.PostMagicImagePng = channel.unary_unary(
                 '/WizardSystem.WizardService/PostMagicImagePng',
                 request_serializer=wizard__system__pb2.Image.SerializeToString,
                 response_deserializer=wizard__system__pb2.Magic.FromString,
@@ -29,13 +29,13 @@ class WizardServiceStub(object):
 class WizardServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def PostMagicImageRaw(self, request_iterator, context):
+    def PostMagicImageRaw(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def PostMagicImagePng(self, request_iterator, context):
+    def PostMagicImagePng(self, request, context):
         """rpc GetMacAddress (google.protobuf.Empty) returns (MessageMacAddress);
         rpc GetHeartBeat (google.protobuf.Empty) returns (HeartBeat);
         rpc GetPerformance (google.protobuf.Empty) returns (Performance);
@@ -49,12 +49,12 @@ class WizardServiceServicer(object):
 
 def add_WizardServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'PostMagicImageRaw': grpc.stream_unary_rpc_method_handler(
+            'PostMagicImageRaw': grpc.unary_unary_rpc_method_handler(
                     servicer.PostMagicImageRaw,
                     request_deserializer=wizard__system__pb2.Image.FromString,
                     response_serializer=wizard__system__pb2.Magic.SerializeToString,
             ),
-            'PostMagicImagePng': grpc.stream_unary_rpc_method_handler(
+            'PostMagicImagePng': grpc.unary_unary_rpc_method_handler(
                     servicer.PostMagicImagePng,
                     request_deserializer=wizard__system__pb2.Image.FromString,
                     response_serializer=wizard__system__pb2.Magic.SerializeToString,
@@ -70,7 +70,7 @@ class WizardService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def PostMagicImageRaw(request_iterator,
+    def PostMagicImageRaw(request,
             target,
             options=(),
             channel_credentials=None,
@@ -80,14 +80,14 @@ class WizardService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.stream_unary(request_iterator, target, '/WizardSystem.WizardService/PostMagicImageRaw',
+        return grpc.experimental.unary_unary(request, target, '/WizardSystem.WizardService/PostMagicImageRaw',
             wizard__system__pb2.Image.SerializeToString,
             wizard__system__pb2.Magic.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def PostMagicImagePng(request_iterator,
+    def PostMagicImagePng(request,
             target,
             options=(),
             channel_credentials=None,
@@ -97,7 +97,7 @@ class WizardService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.stream_unary(request_iterator, target, '/WizardSystem.WizardService/PostMagicImagePng',
+        return grpc.experimental.unary_unary(request, target, '/WizardSystem.WizardService/PostMagicImagePng',
             wizard__system__pb2.Image.SerializeToString,
             wizard__system__pb2.Magic.FromString,
             options, channel_credentials,
