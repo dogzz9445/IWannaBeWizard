@@ -16,7 +16,7 @@ import wizard_system_pb2
 import wizard_system_pb2_grpc
 
 def resize_image_from_bytes(pre_image, original_size: tuple, target_size: tuple):
-    img = np.frombuffer(pre_image, dtype=np.float32).reshape(original_size + (3,))
+    img = np.frombuffer(pre_image, dtype=np.byte).reshape(original_size + (3,))
     img = image.array_to_img(img)
     return img.resize(target_size) 
 

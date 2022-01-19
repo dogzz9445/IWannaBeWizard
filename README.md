@@ -19,7 +19,7 @@ $ venv\Scripts\activate
 ```
 > For csharp
 ```
-$ protoc -I=./proto/ --csharp_out=csharp ./proto/wizard_system.proto
+$ .\proto\protoc -I=./proto/ --csharp_out=./csharp --grpc_out=./csharp --plugin=protoc-gen-grpc=./proto/grpc_csharp_plugin.exe ./proto/wizard_system.proto
 ```
 > Start server
 ```
@@ -30,5 +30,3 @@ $ protoc -I=./proto/ --csharp_out=csharp ./proto/wizard_system.proto
 
 
 # Release:
-
-
