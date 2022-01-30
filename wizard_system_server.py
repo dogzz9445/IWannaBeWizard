@@ -24,7 +24,14 @@ def predict(model, image):
     image = np.expand_dims(image, axis=0)
     image = preprocess_input(image)
 
-    preds = model.predict(image).argmax(axis=1)
+    isValidate = False
+    preds = model.predict(image)
+    for pred in preds[0]:
+        if pred > 0.5:
+            isValidate = True
+    if isValidate is False:
+        return [[]]
+    preds = preds.argmax(axis=1)
     print('Predicted:', preds)
     return preds
 
