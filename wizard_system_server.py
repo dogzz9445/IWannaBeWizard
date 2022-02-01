@@ -7,7 +7,7 @@ import wizard_system_pb2
 import wizard_system_pb2_grpc
 
 from magic_classifier import MagicClassifier
-from magic_converter import MagicConveter
+from magic_converter import MagicConverter
 
 class WizardSystemServicer(wizard_system_pb2_grpc.WizardServiceServicer):
     
@@ -16,15 +16,17 @@ class WizardSystemServicer(wizard_system_pb2_grpc.WizardServiceServicer):
         
     def PostMagicImageRaw(self, request, context):
         context.set_code(grpc.StatusCode.OK)
-        resized_image = MagicConveter.resize_image_from_bytes(request.imageData, (request.height, request.width), (299, 299))
+        resized_image = MagicConverter.resize_image_from_bytes(request.imageData, (request.height, request.width), (299, 299))
         pred = self.magic_classifier.predict(resized_image)
-        magic_type = MagicConveter.get_shape_type(pred)
+        magic_type = MagicConverter.get_shape_type(pred)
         return wizard_system_pb2.Magic(type=magic_type)
 
     def PostMagicImagePng(self, request, context):
         context.set_code(grpc.StatusCode.OK)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        resized_image = MagicConverter.resize_image_from_png(request.imageData, (request.height, request.width), (299,  299))
+        pred = self.magic_classifier.predict(resized_image)
+        magic_type = MagicConverter.get_shape_type(pred)
+        return wizard_system_pb2.Magic(type=magic_type)
 
 
 def serve():

@@ -10,6 +10,7 @@ option csharp_namespace = "WizardSystem.Protobuf";
 service WizardService
 {
     rpc PostMagicImageRaw (Image) returns (Magic);
+    rpc PostMagicImagePng (Image) returns (Magic);
 }
 
 // 이미지
