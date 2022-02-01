@@ -71,7 +71,7 @@ class ShapeClassifier:
         self.model.save(file_name)
         
 if __name__ == '__main__':
-    shapeClassifier = ShapeClassifier('./data')
+    shapeClassifier = ShapeClassifier('./train_data')
     shapeClassifier.load_data()
     shapeClassifier.make_model()
     shapeClassifier.fit_model()
