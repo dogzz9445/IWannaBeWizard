@@ -1,6 +1,9 @@
 import os
 import sys
 import argparse
+import logging
+
+from wizard_system_server import *
 
 parser = argparse.ArgumentParser()
 parser.add_argument('runserver', help='train data', action='store_true')
@@ -8,6 +11,8 @@ parser.add_argument('train', help='train data', action='store_true')
 parser.add_argument('test', help='train data', action='store_true')
 
 def runserver():
+    logging.basicConfig()
+    serve()
     pass
 
 def train():
