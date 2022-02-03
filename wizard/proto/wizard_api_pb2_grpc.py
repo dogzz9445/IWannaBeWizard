@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from .wizard_system_pb2 import *
+from . import wizard_api_pb2 as wizard__api__pb2
 
 
 class WizardServiceStub(object):
@@ -15,14 +15,14 @@ class WizardServiceStub(object):
             channel: A grpc.Channel.
         """
         self.PostMagicImageRaw = channel.unary_unary(
-                '/WizardSystem.WizardService/PostMagicImageRaw',
-                request_serializer=Image.SerializeToString,
-                response_deserializer=Magic.FromString,
+                '/WizardApi.WizardService/PostMagicImageRaw',
+                request_serializer=wizard__api__pb2.Image.SerializeToString,
+                response_deserializer=wizard__api__pb2.Magic.FromString,
                 )
         self.PostMagicImagePng = channel.unary_unary(
-                '/WizardSystem.WizardService/PostMagicImagePng',
-                request_serializer=Image.SerializeToString,
-                response_deserializer=Magic.FromString,
+                '/WizardApi.WizardService/PostMagicImagePng',
+                request_serializer=wizard__api__pb2.Image.SerializeToString,
+                response_deserializer=wizard__api__pb2.Magic.FromString,
                 )
 
 
@@ -36,12 +36,7 @@ class WizardServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def PostMagicImagePng(self, request, context):
-        """rpc GetMacAddress (google.protobuf.Empty) returns (MessageMacAddress);
-        rpc GetHeartBeat (google.protobuf.Empty) returns (HeartBeat);
-        rpc GetPerformance (google.protobuf.Empty) returns (Performance);
-        rpc PostComputerControlMessage (ComputerControl) returns (google.protobuf.Empty);
-        rpc PostProgramControlMessage (ProgramControl) returns (MessageResult);
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -51,17 +46,17 @@ def add_WizardServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'PostMagicImageRaw': grpc.unary_unary_rpc_method_handler(
                     servicer.PostMagicImageRaw,
-                    request_deserializer=Image.FromString,
-                    response_serializer=Magic.SerializeToString,
+                    request_deserializer=wizard__api__pb2.Image.FromString,
+                    response_serializer=wizard__api__pb2.Magic.SerializeToString,
             ),
             'PostMagicImagePng': grpc.unary_unary_rpc_method_handler(
                     servicer.PostMagicImagePng,
-                    request_deserializer=Image.FromString,
-                    response_serializer=Magic.SerializeToString,
+                    request_deserializer=wizard__api__pb2.Image.FromString,
+                    response_serializer=wizard__api__pb2.Magic.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'WizardSystem.WizardService', rpc_method_handlers)
+            'WizardApi.WizardService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -80,9 +75,9 @@ class WizardService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/WizardSystem.WizardService/PostMagicImageRaw',
-            Image.SerializeToString,
-            Magic.FromString,
+        return grpc.experimental.unary_unary(request, target, '/WizardApi.WizardService/PostMagicImageRaw',
+            wizard__api__pb2.Image.SerializeToString,
+            wizard__api__pb2.Magic.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -97,8 +92,8 @@ class WizardService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/WizardSystem.WizardService/PostMagicImagePng',
-            Image.SerializeToString,
-            Magic.FromString,
+        return grpc.experimental.unary_unary(request, target, '/WizardApi.WizardService/PostMagicImagePng',
+            wizard__api__pb2.Image.SerializeToString,
+            wizard__api__pb2.Magic.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

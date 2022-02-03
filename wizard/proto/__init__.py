@@ -1,2 +1,2 @@
-from .wizard_system_pb2 import *
-from .wizard_system_pb2_grpc import *
+from .wizard_api_pb2 import *
+from .wizard_api_pb2_grpc import *

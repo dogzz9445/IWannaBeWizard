@@ -5,10 +5,10 @@ import logging
 import grpc
 
 from . import *
-from .proto import wizard_system_pb2
-from .proto import wizard_system_pb2_grpc
+from .proto import wizard_api_pb2 as Api
+from .proto import wizard_api_pb2_grpc as ApiGrpc
 
-class WizardSystemServicer(wizard_system_pb2_grpc.WizardServiceServicer):
+class WizardApiServicer(ApiGrpc.WizardServiceServicer):
     def __init__(self, model_path: str):
         if not model_path:
             model_path = 'model/model_classification'
@@ -19,14 +19,14 @@ class WizardSystemServicer(wizard_system_pb2_grpc.WizardServiceServicer):
         resized_image = MagicConverter.resize_image_from_bytes(request.imageData, (request.height, request.width), (299, 299))
         pred = self.magic_classifier.predict(resized_image)
         magic_type = MagicConverter.get_shape_type(pred)
-        return wizard_system_pb2.Magic(type=magic_type)
+        return Api.Magic(type=magic_type)
 
     def PostMagicImagePng(self, request, context):
         context.set_code(grpc.StatusCode.OK)
         resized_image = MagicConverter.resize_image_from_png(request.imageData, (request.height, request.width), (299,  299))
         pred = self.magic_classifier.predict(resized_image)
         magic_type = MagicConverter.get_shape_type(pred)
-        return wizard_system_pb2.Magic(type=magic_type)
+        return Api.Magic(type=magic_type)
 
 class WizardServer:
     def __init__(self, model_path: str):
@@ -36,7 +36,7 @@ class WizardServer:
 
     def run(self):
         server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-        wizard_system_pb2_grpc.add_WizardServiceServicer_to_server(WizardSystemServicer(self.model_path), server)
+        ApiGrpc.add_WizardServiceServicer_to_server(WizardApiServicer(self.model_path), server)
         server.add_insecure_port('[::]:50051')
         server.start()
         server.wait_for_termination()
