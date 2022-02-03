@@ -8,8 +8,6 @@ from tensorflow.keras.callbacks import ModelCheckpoint
 import numpy as np
 
 class MagicClassifier:
-
-    # model_path 
     def __init__(self, model_path: str):
         if not model_path:
             self.model = keras.models.load_model('model/model_classification')
