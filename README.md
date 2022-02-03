@@ -32,7 +32,7 @@ $ venv/Scripts/activate
 
 Compile protobuf for python
 ```
-(venv)$ python -m grpc_tools.protoc -I=./proto/ --python_out=. --grpc_python_out=. ./proto/wizard_system.proto
+(venv)$ python -m grpc_tools.protoc -I=./proto/ --python_out=./wizard/proto/ --grpc_python_out=./wizard/proto/ ./proto/wizard_system.proto
 ```
 or
 ```
