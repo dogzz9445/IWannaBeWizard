@@ -8,7 +8,7 @@ from tensorflow.keras.layers import Dense
 from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.callbacks import ModelCheckpoint
 
-class ShapeClassifier:
+class MagicModelBuilder:
     
     def __init__(self, data_folder: str):
          # Split dataset into Train, Validation & Test sets
@@ -69,13 +69,15 @@ class ShapeClassifier:
         pred = self.model.predict(self.test_data).argmax(axis=1)
         labels = list(self.train_data.class_indices.keys())
         
-    def save_model(self, file_name : str):
-        self.model.save(file_name)
+    def save_model(self, model_path : str):
+        if not model_path:
+            model_path = 'model/model_classification'
+        self.model.save(model_path)
         
 if __name__ == '__main__':
-    shapeClassifier = ShapeClassifier('./train_data')
-    shapeClassifier.load_data()
-    shapeClassifier.make_model()
-    shapeClassifier.fit_model()
-    shapeClassifier.test_model()
-    shapeClassifier.save_model('model/model_classification')
+    modelBuilder = MagicModelBuilder('./train_data')
+    modelBuilder.load_data()
+    modelBuilder.make_model()
+    modelBuilder.fit_model()
+    modelBuilder.test_model()
+    modelBuilder.save_model('model/model_classification')

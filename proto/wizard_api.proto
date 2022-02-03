@@ -3,7 +3,7 @@ syntax = "proto3";
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 
-package WizardData;
+package WizardApi;
 
 option csharp_namespace = "WizardSystem.Protobuf";
 
