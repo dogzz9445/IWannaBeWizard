@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import wizard_system_pb2 as wizard__system__pb2
+from .wizard_system_pb2 import *
 
 
 class WizardServiceStub(object):
@@ -16,13 +16,13 @@ class WizardServiceStub(object):
         """
         self.PostMagicImageRaw = channel.unary_unary(
                 '/WizardSystem.WizardService/PostMagicImageRaw',
-                request_serializer=wizard__system__pb2.Image.SerializeToString,
-                response_deserializer=wizard__system__pb2.Magic.FromString,
+                request_serializer=Image.SerializeToString,
+                response_deserializer=Magic.FromString,
                 )
         self.PostMagicImagePng = channel.unary_unary(
                 '/WizardSystem.WizardService/PostMagicImagePng',
-                request_serializer=wizard__system__pb2.Image.SerializeToString,
-                response_deserializer=wizard__system__pb2.Magic.FromString,
+                request_serializer=Image.SerializeToString,
+                response_deserializer=Magic.FromString,
                 )
 
 
@@ -51,13 +51,13 @@ def add_WizardServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'PostMagicImageRaw': grpc.unary_unary_rpc_method_handler(
                     servicer.PostMagicImageRaw,
-                    request_deserializer=wizard__system__pb2.Image.FromString,
-                    response_serializer=wizard__system__pb2.Magic.SerializeToString,
+                    request_deserializer=Image.FromString,
+                    response_serializer=Magic.SerializeToString,
             ),
             'PostMagicImagePng': grpc.unary_unary_rpc_method_handler(
                     servicer.PostMagicImagePng,
-                    request_deserializer=wizard__system__pb2.Image.FromString,
-                    response_serializer=wizard__system__pb2.Magic.SerializeToString,
+                    request_deserializer=Image.FromString,
+                    response_serializer=Magic.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -81,8 +81,8 @@ class WizardService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/WizardSystem.WizardService/PostMagicImageRaw',
-            wizard__system__pb2.Image.SerializeToString,
-            wizard__system__pb2.Magic.FromString,
+            Image.SerializeToString,
+            Magic.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -98,7 +98,7 @@ class WizardService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/WizardSystem.WizardService/PostMagicImagePng',
-            wizard__system__pb2.Image.SerializeToString,
-            wizard__system__pb2.Magic.FromString,
+            Image.SerializeToString,
+            Magic.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

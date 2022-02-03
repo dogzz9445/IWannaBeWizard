@@ -1,14 +1,12 @@
 
 from concurrent import futures
 import logging
-from pyexpat import model
 
 import grpc
-import wizard_system_pb2
-import wizard_system_pb2_grpc
 
-from magic_classifier import MagicClassifier
-from magic_converter import MagicConverter
+from . import *
+from .proto import wizard_system_pb2
+from .proto import wizard_system_pb2_grpc
 
 class WizardSystemServicer(wizard_system_pb2_grpc.WizardServiceServicer):
     def __init__(self, model_path: str):
