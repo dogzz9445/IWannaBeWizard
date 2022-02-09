@@ -1,9 +1,7 @@
 
 from concurrent import futures
 import logging
-
 import grpc
-
 from . import *
 from .proto import wizard_api_pb2 as Api
 from .proto import wizard_api_pb2_grpc as ApiGrpc
@@ -32,7 +30,7 @@ class WizardServer:
     def __init__(self, model_path: str):
         if not model_path:
             model_path = 'model/model_classification'
-        self.model_path = model_path        
+        self.model_path = model_path 
 
     def run(self):
         server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

@@ -31,7 +31,6 @@ class MagicClassifier:
         if isValidate is False:
             return -1
         preds = preds.argmax(axis=1)
-        print('Predicted:', preds)
         if preds == None:
             return -1
         return preds[0]

@@ -1,5 +1,9 @@
 # MagicClassifier(I Wanna Be a Wizard)
 ## NOT RELEASED
+MagicClassifier includes GRPC server for shape classification
+Server responses convert shpae image to string 
+1. Train data : python manage.py train
+2. Run server : python manage.py runserver
 MagicClassifier is 
 
 ![image1](./images/hou.png)
@@ -43,6 +47,8 @@ Compile protobuf for csharp
 ```
 $ .\proto\protoc -I=./proto/ --csharp_out=./csharp --grpc_out=./csharp --plugin=protoc-gen-grpc=./proto/grpc_csharp_plugin.exe ./proto/wizard_system.proto
 ```
+
+# Wizard Server
 
 ### Train data
 > model default is 'model/model_classfication'
