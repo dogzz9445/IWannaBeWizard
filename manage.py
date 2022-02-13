@@ -29,7 +29,7 @@ class WizardManager:
                 
     def execute(self, argv):
         if len(argv) <= 1 or argv[1] == '-h' or argv[1] == '--help':
-            parser.print_help()
+            self.argument_parser.print_help()
             return
         
         if len(argv) > 2:
@@ -82,7 +82,7 @@ class WizardManager:
     
     def run_server(self):
         server = WizardServer(self.model_path)
-        loggin.basicConfig()
+        logging.basicConfig()
         server.run()
 
     # --------------------------------
