@@ -2,6 +2,6 @@ from wizard.MagicClassifier import MagicClassifier
 
 
 from .MagicClassifier import MagicClassifier
-from .MagicConverter import MagicConverter 
+from .MagicImage import MagicImage 
 from .MagicModelBuilder import MagicModelBuilder
 from .WizardServer import WizardServer

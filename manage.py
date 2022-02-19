@@ -68,9 +68,9 @@ class WizardManager:
         classifier = MagicClassifier(self.model_path)
         filenames = self.all_filename_from(self.test_data_path)
         for filename in filenames:
-            loaded_image = self.load_image(self.test_data_path + filename)
+            loaded_image = MagicImage.load_image(self.test_data_path + filename, (299, 299))
             shape = classifier.predict(loaded_image)
-            magic = MagicConverter.get_shape_type(shape)
+            magic = MagicImage.get_shape_type(shape)
             print(filename + " " + magic)
 
 
@@ -94,11 +94,6 @@ class WizardManager:
     # --------------------------------
     def all_filename_from(self, directory: str):
         return [f for f in listdir(directory) if isfile(join(directory, f))]
-    
-    def load_image(self, filename: str):
-        img = KerasImage.load_img(filename, target_size=(299, 299))
-        arr_img = KerasImage.img_to_array(img)
-        return arr_img.astype(np.float32)
 
 def main():
     manager = WizardManager()

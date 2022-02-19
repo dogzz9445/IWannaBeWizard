@@ -14,16 +14,16 @@ class WizardApiServicer(ApiGrpc.WizardServiceServicer):
         
     def PostMagicImageRaw(self, request, context):
         context.set_code(grpc.StatusCode.OK)
-        resized_image = MagicConverter.resize_image_from_bytes(request.imageData, (request.height, request.width), (299, 299))
-        pred = self.magic_classifier.predict(resized_image)
-        magic_type = MagicConverter.get_shape_type(pred)
+        img = MagicImage.resize_image_from_bytes(request.imageData, (request.height, request.width), (299, 299))
+        pred = self.magic_classifier.predict(img)
+        magic_type = MagicImage.get_shape_type(pred)
         return Api.Magic(type=magic_type)
 
     def PostMagicImagePng(self, request, context):
         context.set_code(grpc.StatusCode.OK)
-        resized_image = MagicConverter.resize_image_from_png(request.imageData, (request.height, request.width), (299,  299))
-        pred = self.magic_classifier.predict(resized_image)
-        magic_type = MagicConverter.get_shape_type(pred)
+        img = MagicImage.resize_image_from_png(request.imageData, (299,  299))
+        pred = self.magic_classifier.predict(img)
+        magic_type = MagicImage.get_shape_type(pred)
         return Api.Magic(type=magic_type)
 
 class WizardServer:
