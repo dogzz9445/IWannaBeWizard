@@ -8,9 +8,9 @@ Server responses convert shpae image to string
 
 |0_circle|1_square|2_star|3_triangle|4_lighting|
 |:-:|:-:|:-:|:-:|:-:|
-|[<img src="./test_data/circle.png" width="100"/>](./test_data/circle.png)|[<img src="./test_data/square.png" width="100"/>](./test_data/square.png)|[<img src="./test_data/star.png" width="100"/>](./test_data/star.png)|[<img src="./images/triangle.png" width="100"/>](./images/triangle.png)|[<img src="./test_data/lightning.png" width="100"/>](./test_data/lightning.png)
-|5_모래시계|6_무한대|7_골뱅이|   |   |
-|TBA|TBA|TBA|TBA|TBA|
+|[<img src="./images/circle.png" width="100"/>](./images/circle.png)|[<img src="./images/square.png" width="100"/>](./images/square.png)|[<img src="./images/star.png" width="100"/>](./images/star.png)|[<img src="./images/triangle.png" width="100"/>](./images/triangle.png)|[<img src="./images/lightning.png" width="100"/>](./images/lightning.png)
+|5_hourglass|6_infinity|7_골뱅이|   |   |
+|[<img src="./images/hourglass.png" width="100"/>](./images/hourglass.png)|[<img src="./images/infinity.png" width="100"/>](./images/infinity.png)|TBA|TBA|TBA|
 
 [<img src="./images/hou.png" width="600"/>](./images/hou.png)
 
