@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-import "google/protobuf/empty.proto";
-import "google/protobuf/timestamp.proto";
+// import "google/protobuf/empty.proto";
+// import "google/protobuf/timestamp.proto";
 
 package WizardApi;
 
@@ -9,12 +9,18 @@ option csharp_namespace = "WizardSystem.Protobuf";
 
 service WizardService
 {
-    rpc PostMagicImageRaw (Image) returns (Magic);
-    rpc PostMagicImagePng (Image) returns (Magic);
+    rpc PostMagicImageRaw (MagicImage) returns (Magic);
+    rpc PostMagicImagePng (MagicImage) returns (Magic);
+}
+
+message MagicColor {
+    float r = 1;
+    float g = 2;
+    float b = 3;
 }
 
 // 이미지
-message Image {
+message MagicImage {
     int32 width = 1;
     int32 height = 2;
     bytes imageData = 3;
@@ -23,6 +29,7 @@ message Image {
 // Magic 타입
 message Magic {
     string type = 1;
+    repeated MagicColor magicColors = 2;
 }
 
 // message MessageMacAddress
