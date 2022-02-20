@@ -6,13 +6,13 @@ Server responses convert shpae image to string
 2. Run server : python manage.py runserver
 
 
-|0_circle|1_square|2_star|3_triangle|4_lighting|
-|:-:|:-:|:-:|:-:|:-:|
-|[<img src="./images/circle.png" width="100"/>](./images/circle.png)|[<img src="./images/square.png" width="100"/>](./images/square.png)|[<img src="./images/star.png" width="100"/>](./images/star.png)|[<img src="./images/triangle.png" width="100"/>](./images/triangle.png)|[<img src="./images/lightning.png" width="100"/>](./images/lightning.png)
+|0_circle|1_square|2_star|3_triangle|4_lighting|5_hourglass|
+|:-:|:-:|:-:|:-:|:-:|:-:|
+|[<img src="./images/circle.png" width="100"/>](./images/circle.png)|[<img src="./images/square.png" width="100"/>](./images/square.png)|[<img src="./images/star.png" width="100"/>](./images/star.png)|[<img src="./images/triangle.png" width="100"/>](./images/triangle.png)|[<img src="./images/lightning.png" width="100"/>](./images/lightning.png)|[<img src="./images/hourglass.png" width="100"/>](./images/hourglass.png)|
 
-|5_hourglass|6_infinity|7_swirl|8_fire|9_water|
-|:-:|:-:|:-:|:-:|:-:|
-|[<img src="./images/hourglass.png" width="100"/>](./images/hourglass.png)|[<img src="./images/infinity.png" width="100"/>](./images/infinity.png)|[<img src="./images/swirl.png" width="100"/>](./images/swirl.png)|[<img src="./images/fire.png" width="100"/>](./images/fire.png)|[<img src="./images/water.png" width="100"/>](./images/water.png)|
+|6_infinity|7_swirl|8_fire|9_water|10_arrow|11_|
+|:-:|:-:|:-:|:-:|:-:|:-:|
+|[<img src="./images/infinity.png" width="100"/>](./images/infinity.png)|[<img src="./images/swirl.png" width="100"/>](./images/swirl.png)|[<img src="./images/fire.png" width="100"/>](./images/fire.png)|[<img src="./images/water.png" width="100"/>](./images/water.png)|[<img src="./images/arrow.png" width="100"/>](./images/arrow.png)|
 
 [<img src="./images/hou.png" width="600"/>](./images/hou.png)
 

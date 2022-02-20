@@ -21,7 +21,7 @@ class MagicImage:
         img = KerasImage.array_to_img(img)
         return img
 
-    def get_shape_type(shape):
+    def get_shape_type(shape: int):
         if shape == 0:
             return 'circle'
         elif shape == 1:
@@ -32,5 +32,18 @@ class MagicImage:
             return 'triangle'
         elif shape == 4:
             return 'lightning'
+        elif shape == 5:
+            return 'hourglass'
+        elif shape == 6:
+            return 'swirl'
+        elif shape == 7:
+            return 'swirl'
+        elif shape == 8:
+            return 'fire'
+        elif shape == 9:
+            return 'water'
+        elif shape == 10:
+            return 'arrow'
+
 
         return 'None'
