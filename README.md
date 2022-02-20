@@ -4,7 +4,13 @@ MagicClassifier includes GRPC server for shape classification
 Server responses convert shpae image to string 
 1. Train data : python manage.py train
 2. Run server : python manage.py runserver
-MagicClassifier is 
+
+
+| 1  | 2  | 3  | 4  | 5  |
+|:-:|:-:|:-:|:-:|:-:|
+|[<img src="./test_data/circle.png" width="100"/>](./test_data/circle.png)|![square](./test_data/square.png)|![star](./test_data/star.png)|![triangle](./test_data/triangle.png)|![lightning](./test_data/lightning.png)
+|   |   |   |   |   |
+|   |   |   |   |   |
 
 ![image1](./images/hou.png)
 current status image(2022-01-10)
