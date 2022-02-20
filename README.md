@@ -6,13 +6,14 @@ Server responses convert shpae image to string
 2. Run server : python manage.py runserver
 
 
-| 1  | 2  | 3  | 4  | 5  |
+|0_circle|1_square|2_star|3_triangle|4_lighting|
 |:-:|:-:|:-:|:-:|:-:|
 |[<img src="./test_data/circle.png" width="100"/>](./test_data/circle.png)|[<img src="./test_data/square.png" width="100"/>](./test_data/square.png)|[<img src="./test_data/star.png" width="100"/>](./test_data/star.png)|[<img src="./test_data/triangle.png" width="100"/>](./test_data/triangle.png)|[<img src="./test_data/lightning.png" width="100"/>](./test_data/lightning.png)
-|   |   |   |   |   |
+|5_모래시계|6_무한대|7_골뱅이|   |   |
 |   |   |   |   |   |
 
-![image1](./images/hou.png)
+[<img src="./images/hou.png" width="600"/>](./images/hou.png)
+
 current status image(2022-01-10)
 
 TODO: add architecture image
