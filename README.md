@@ -8,7 +8,7 @@ Server responses convert shpae image to string
 
 | 1  | 2  | 3  | 4  | 5  |
 |:-:|:-:|:-:|:-:|:-:|
-|[<img src="./test_data/circle.png" width="100"/>](./test_data/circle.png)|![square](./test_data/square.png)|![star](./test_data/star.png)|![triangle](./test_data/triangle.png)|![lightning](./test_data/lightning.png)
+|[<img src="./test_data/circle.png" width="100"/>](./test_data/circle.png)|[<img src="./test_data/square.png" width="100"/>](./test_data/square.png)|[<img src="./test_data/star.png" width="100"/>](./test_data/star.png)|[<img src="./test_data/triangle.png" width="100"/>](./test_data/triangle.png)|[<img src="./test_data/lightning.png" width="100"/>](./test_data/lightning.png)
 |   |   |   |   |   |
 |   |   |   |   |   |
 
