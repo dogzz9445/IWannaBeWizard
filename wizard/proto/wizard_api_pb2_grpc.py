@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import wizard_api_pb2 as wizard__api__pb2
+from . import wizard_api_pb2 as wizard__api__pb2
 
 
 class WizardServiceStub(object):
